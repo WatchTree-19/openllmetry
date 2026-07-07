@@ -177,7 +177,7 @@ def _wrap(
         if duration > 0 and query_duration_metric and to_wrap.get("method") == "query":
             query_duration_metric.record(duration, shared_attributes)
 
-        if response:
+        if response is not None:
             if span.is_recording():
                 if to_wrap.get("method") == "query":
                     set_query_response(span, scores_metric, shared_attributes, response)
